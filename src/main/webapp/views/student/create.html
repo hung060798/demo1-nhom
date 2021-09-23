@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/students/list"></a>
+<form action="/students/create-student" method="post" th:object = "${student}" enctype="multipart/form-data">
+  <table border="1">
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Class</th>
+      <th>IMG</th>
+    </tr>
+      <tr>
+        <td><input type="text" th:field="*{name}"></td>
+        <td><input type="text" th:field="*{phoneNumber}">
+        <td><select th:field="*{classes}">
+          <option th:each="c:${classzz}" th:text="${c.name}" th:value="${c.id}"></option>
+        </select></td>
+        <td><input type="file" name="image"></td>
+      </tr>
+  </table>
+  <button type="submit">create</button>
+</form>
+</body>
+</html>

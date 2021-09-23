@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/students/create">create</a>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Phone</th>
+        <th>IMG</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="std : ${listStudent}">
+        <tr>
+            <td th:text="${std.name}"></td>
+            <td th:text="${std.classes.name}"></td>
+            <td th:text="${std.phoneNumber}"></td>
+            <td><img th:src="@{'/pathImg/'+${std.img}}" width="100" alt=""></td>
+            <td><a th:href="@{/students/edit/__${std.id}__ }">Edit</a></td>
+            <td><a th:href="@{/students/delete/__${std.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+
+<div>
+    <a th:href="@{/students/list(page=${listStudent.number - 1})}" th:if="${listStudent.hasPrevious()}">Previous</a>
+    <span th:text="${listStudent.number + 1}"></span>/<span th:text="${listStudent.totalPages}"></span>
+    <a th:href="@{/students/list(page=${listStudent.number + 1})}" th:if="${listStudent.hasNext()}">Next</a>
+</div>
+</body>
+</html>
