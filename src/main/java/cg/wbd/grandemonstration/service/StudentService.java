@@ -33,4 +33,9 @@ public class StudentService implements IStudentService{
     public void delete(Long id ) {
         studentRepo.deleteById(id);
     }
+
+    @Override
+    public Iterable<Student> findAllByNameContaining(String nameStudent) {
+        return studentRepo.findAllByNameContaining(nameStudent);
+    }
 }

@@ -1,5 +1,7 @@
 package cg.wbd.grandemonstration.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,6 +12,7 @@ public class Classes {
     private Long id;
     private String name;
     @OneToMany(targetEntity = Student.class)
+    @JsonIgnore
     private List<Student> studentList;
 
     public Classes() {

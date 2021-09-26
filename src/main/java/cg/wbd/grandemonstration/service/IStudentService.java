@@ -15,4 +15,6 @@ public interface IStudentService {
 
     void delete(Long id);
 
+    Iterable<Student> findAllByNameContaining(String nameStudent);
+
 }
